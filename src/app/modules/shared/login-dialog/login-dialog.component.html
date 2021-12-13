@@ -1,0 +1,10 @@
+<p-dialog header="Login" [(visible)]="isVisible">
+  <div class="form-floating mb-3">
+    <input [(ngModel)]="password" type="text" class="form-control" id="password">
+    <label for="password">Password</label>
+  </div>
+  <ng-template pTemplate="footer">
+    <button (click)="dialogFinished.emit(undefined)" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <button (click)="dialogFinished.emit(password)" type="button" class="btn btn-primary">Confirm</button>
+  </ng-template>
+</p-dialog>
