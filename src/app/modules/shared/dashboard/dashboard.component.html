@@ -1,2 +1,5 @@
 <app-daily-cases></app-daily-cases>
-<app-bar-chart [input]="ageGroupData" ></app-bar-chart>
+<div class="d-flex">
+  <app-bar-chart [input]="ageGroupData" ></app-bar-chart>
+  <app-pie-chart [input]="deathsGendered"></app-pie-chart>
+</div>

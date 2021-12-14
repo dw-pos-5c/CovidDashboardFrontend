@@ -21,4 +21,16 @@ export class BackendConnectorService {
   public getAgeGroupGendered(): Promise<AgeGroup> {
     return this.http.get<AgeGroup>(`${this.url}/agegroup-gendered`).toPromise();
   }
+
+  getDeathsGendered(): Promise<AgeGroup> {
+    return this.http.get<AgeGroup>(`${this.url}/deaths-gendered`).toPromise();
+  }
+
+  getDeathsDaily(): Promise<TimelineDaily> {
+    return this.http.get<TimelineDaily>(`${this.url}/daily-deaths`).toPromise();
+  }
+
+  getCasesCounty(): Promise<TimelineDaily> {
+    return this.http.get<TimelineDaily>(`${this.url}/daily-county`).toPromise();
+  }
 }

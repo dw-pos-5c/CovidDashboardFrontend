@@ -14,8 +14,7 @@ export class LineChartComponent implements OnInit {
   chartData!: ChartConfiguration['data'];
 
   @Input()
-  public set input(val: object) {
-    // @ts-ignore
+  public set input(val: ChartConfiguration['data']) {
     this.chartData = val;
     this.chart?.update();
   }

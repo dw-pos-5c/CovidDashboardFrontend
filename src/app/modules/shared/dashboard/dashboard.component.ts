@@ -10,11 +10,17 @@ import {BackendConnectorService} from "../../core/backend-connector.service";
 export class DashboardComponent implements OnInit {
 
   ageGroupData!: ChartData<'bar'>;
+  deathsGendered!: ChartData<'pie'>;
 
   constructor(private backend: BackendConnectorService) {
     backend.getAgeGroup().then(result => {
       // @ts-ignore
       this.ageGroupData = result;
+    })
+
+    backend.getDeathsGendered().then(result => {
+      // @ts-ignore
+      this.deathsGendered = result;
     })
   }
 

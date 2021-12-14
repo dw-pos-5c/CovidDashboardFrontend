@@ -11,21 +11,16 @@ export class BarChartComponent implements OnInit {
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
-  chartData: ChartData<'bar'>= {
-    labels: [],
-    datasets: [],
-  };
+  chartData!: ChartData<'bar'>;
 
   @Input()
-  public set input(val: object) {
-    // @ts-ignore
+  public set input(val: ChartData<'bar'>) {
     this.chartData = val;
     this.chart?.update();
   }
 
   barChartOptions: ChartConfiguration<'bar'>['options'] = {
-    responsive: true,
-    // We use these empty structures as placeholders for dynamic theming.
+    responsive: false,
     scales: {
       x: {},
       y: {
