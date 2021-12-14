@@ -1,9 +1,9 @@
 export default class TimelineDaily {
   labels: string[];
-  data: number[];
+  datasets: object[];
 
-  constructor(labels: string[], data: number[]) {
+  constructor(labels: string[], datasets: object[]) {
     this.labels = labels;
-    this.data = data;
+    this.datasets = datasets;
   }
 }

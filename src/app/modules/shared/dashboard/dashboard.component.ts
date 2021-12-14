@@ -9,20 +9,12 @@ import {BackendConnectorService} from "../../core/backend-connector.service";
 })
 export class DashboardComponent implements OnInit {
 
-  ageGroupEmitter: EventEmitter<object> = new EventEmitter<object>();
-  ageGroupData: ChartData<'bar'> = {
-    labels: [],
-    datasets: [
-      { data: [], label: '' },
-    ],
-  };
+  ageGroupData!: ChartData<'bar'>;
 
   constructor(private backend: BackendConnectorService) {
     backend.getAgeGroup().then(result => {
-      this.ageGroupData.labels = result.labels;
       // @ts-ignore
-      this.ageGroupData.datasets = result.datasets;
-      this.ageGroupEmitter.emit(this.ageGroupData);
+      this.ageGroupData = result;
     })
   }
 

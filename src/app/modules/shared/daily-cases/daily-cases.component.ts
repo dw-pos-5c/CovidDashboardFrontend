@@ -10,24 +10,15 @@ import {BaseChartDirective} from "ng2-charts";
 })
 export class DailyCasesComponent implements OnInit {
 
-  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
-
   chartData: ChartConfiguration['data'] = {
-    datasets: [
-      {
-        data: [],
-        label: '',
-      },
-    ],
     labels: [],
+    datasets: [],
   };
 
   constructor(private backend: BackendConnectorService) {
     backend.getTimelineDaily().then(result => {
-      this.chartData.labels = result.labels;
-      this.chartData.datasets[0].data = result.data;
-      this.chartData.datasets[0].label = 'Daily infections';
-      this.chart?.update();
+      // @ts-ignore
+      this.chartData = result;
     });
   }
 

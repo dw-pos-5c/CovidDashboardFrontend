@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LazyRoutingModule } from './lazy-routing.module';
 import { SecretDataComponent } from './secret-data/secret-data.component';
-import {SharedModule} from "../shared/shared.module";
-
+import {ChartsModule} from "../charts/charts.module";
 
 @NgModule({
   declarations: [
@@ -13,7 +12,7 @@ import {SharedModule} from "../shared/shared.module";
     imports: [
         CommonModule,
         LazyRoutingModule,
-        SharedModule
+        ChartsModule,
     ]
 })
 export class LazyModule { }

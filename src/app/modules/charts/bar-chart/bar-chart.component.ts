@@ -1,7 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {BaseChartDirective} from "ng2-charts";
 import {ChartConfiguration, ChartData} from "chart.js";
-import {BackendConnectorService} from "../../core/backend-connector.service";
 
 @Component({
   selector: 'app-bar-chart',
@@ -14,11 +13,15 @@ export class BarChartComponent implements OnInit {
 
   chartData: ChartData<'bar'>= {
     labels: [],
-    datasets: [
-      { data: [], label: '' },
-    ]
+    datasets: [],
   };
-  @Input() update !: EventEmitter<object>;
+
+  @Input()
+  public set input(val: object) {
+    // @ts-ignore
+    this.chartData = val;
+    this.chart?.update();
+  }
 
   barChartOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
@@ -40,12 +43,6 @@ export class BarChartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.update.subscribe((value) => {
-      // @ts-ignore
-      this.chartData = value;
-      console.log(this.chartData);
-      this.chart?.update();
-    });
   }
 
 }
